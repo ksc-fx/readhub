@@ -1,10 +1,9 @@
 {
-  "pages": ["pages/index/index", "pages/details/index"],
+  "pages": ["pages/index/index", "pages/detail/index"],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarTitleText": "readhub",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTextStyle": "black",
-    "enablePullDownRefresh": true
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
   }
 }

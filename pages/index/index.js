@@ -81,7 +81,6 @@ Page({
         this.setData({
           lowerReqState: false
         });
-        console.log("撒大声地");
         wx.hideLoading();
       })
       .catch(error => {

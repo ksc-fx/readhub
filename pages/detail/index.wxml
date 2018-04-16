@@ -1,0 +1,31 @@
+<view class="detail">
+    <swiper current-item-id="{{currentId}}" class="detail-swiper" autoplay="{{false}}"  bindchange="bindChange">  
+        <swiper-item wx:for="{{dataList}}" wx:key="{{id}}" item-id="{{item.id}}" class="detail-swiper-item">
+            <view class="detail-box">
+                <scroll-view class="detail-content-box">
+                    <view class="detail-title">{{item.title}}</view>
+                    <view class="detail-content">{{item.summary}}</view>
+                </scroll-view>
+                
+                <view class="detail-foot">
+                    <view>
+                        <text>今天</text>
+                        <text class="padding-left10">|</text>
+                        <text class="padding-left10">{{item.siteName}}</text>
+                        <block wx:if="{{item.newsArray && item.newsArray.length>0}}">
+                            <text class="padding-left10">等</text>
+                            <text class="padding-left10">{{item.newsArray.length}}</text>
+                            <text class="padding-left10">家媒体报道</text>
+                        </block>
+                        <block wx:else>
+                            <text class="padding-left10">报道</text>
+                        </block>
+                        
+                    </view>
+                    <view class="detail-share" bindtap="actionSheet"></view>
+                </view>
+
+            </view>
+        </swiper-item>
+    </swiper>
+</view>
