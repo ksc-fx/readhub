@@ -10,6 +10,7 @@ const News = option => {
         .then(data => {
             const news = data.data;
             if (typeof news == "object" || typeof news == "object") {
+                const getNews = [];
                 news.forEach(item => {
                     if (
                         !app.globalData.dayObject[
@@ -24,8 +25,13 @@ const News = option => {
                     const timeStemp = new Date(item.publishDate).getTime();
                     item.dateFormat = parseDate(timeStemp);
 
-                    app.globalData.news.push(item);
+                    getNews.push(item);
                 });
+                if (!option.data.lastCursor) {
+                    app.globalData.news = getNews;
+                } else {
+                    app.globalData.news = app.globalData.news.concat(getNews);
+                }
             } else {
                 if (
                     !app.globalData.dayObject[

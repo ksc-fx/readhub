@@ -23,7 +23,7 @@ Page({
         lowerReqState: false,
         isNavigate: false
     },
-    onLoad: function () {
+    onLoad: function() {
         this.getNews();
         // if (app.globalData.userInfo) {
         //     this.setData({
@@ -52,7 +52,7 @@ Page({
         //     });
         // }
     },
-    getNews: function () {
+    getNews: function() {
         this.setData({
             lowerReqState: true
         });
@@ -74,7 +74,7 @@ Page({
                 console.log("errorsss", error);
             });
     },
-    tabItem: function (e) {
+    tabItem: function(e) {
         if (this.data.isNavigate) {
             return;
         }
@@ -102,15 +102,15 @@ Page({
     /**
      * 滚动
      */
-    scroll: function (e) { },
+    scroll: function(e) {},
     /**
      * 下拉刷新
      */
-    upper: function () { },
+    upper: function() {},
     /**
      * 上拉加载
      */
-    lower: function () {
+    lower: function() {
         console.log("上拉加载");
         if (this.data.lowerReqState) {
             return;
@@ -125,29 +125,28 @@ Page({
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () { },
+    onReady: function() {},
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () { },
+    onShow: function() {},
 
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function () { },
+    onHide: function() {},
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () { },
+    onUnload: function() {},
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
+    onPullDownRefresh: function() {
         this.setData({
-            news: [],
             newsForm: {
                 lastCursor: "",
                 pageSize: 20
@@ -162,7 +161,7 @@ Page({
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function () {
+    onReachBottom: function() {
         console.log("上提加载");
         wx.showLoading({
             title: "正在加载",
@@ -185,5 +184,5 @@ Page({
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function () { }
+    onShareAppMessage: function() {}
 });
