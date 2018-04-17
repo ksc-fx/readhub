@@ -1,18 +1,21 @@
 .list-item__date {
-  font-size: 52rpx;
-  padding: 30rpx 20rpx 0 40rpx;
+    font-size: 60rpx;
+    padding: 30rpx 20rpx 0 42rpx;
+    font-weight: 300;
 }
 .list-item__title {
-  background-color: #ffffff;
-  margin: 20rpx;
-  font-size: 32rpx;
-  padding: 30rpx 20rpx;
-  border-radius: 10rpx;
+    background-color: #ffffff;
+    margin: 20rpx;
+    font-size: 32rpx;
+    padding: 40rpx 30rpx;
+    border-radius: 10rpx;
+    border: 1px solid #dddddd;
+    box-shadow: 0px 0px 10px #dddddd;
 }
 .list-item__title.isActive {
-  -webkit-transform: scale(0.95);
-          transform: scale(0.95);
-  -webkit-transition-duration: 0.6s;
-          transition-duration: 0.6s;
+    -webkit-transform: scale(0.95);
+    transform: scale(0.95);
+    -webkit-transition-duration: 0.6s;
+    transition-duration: 0.6s;
 }
 /*# sourceMappingURL=./index.css.map */
