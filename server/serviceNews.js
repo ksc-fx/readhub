@@ -9,24 +9,40 @@ const News = option => {
     })
         .then(data => {
             const news = data.data;
+            if (typeof news == "object" || typeof news == "object") {
+                news.forEach(item => {
+                    if (
+                        !app.globalData.dayObject[
+                            new Date(item.publishDate).getDay()
+                        ]
+                    ) {
+                        item.showDate = true;
+                        app.globalData.dayObject[
+                            new Date(item.publishDate).getDay()
+                        ] = true;
+                    }
+                    const timeStemp = new Date(item.publishDate).getTime();
+                    item.dateFormat = parseDate(timeStemp);
 
-            news.forEach(item => {
+                    app.globalData.news.push(item);
+                });
+            } else {
                 if (
                     !app.globalData.dayObject[
-                        new Date(item.publishDate).getDay()
+                        new Date(data.publishDate).getDay()
                     ]
                 ) {
-                    item.showDate = true;
+                    data.showDate = true;
                     app.globalData.dayObject[
-                        new Date(item.publishDate).getDay()
+                        new Date(data.publishDate).getDay()
                     ] = true;
                 }
-                const timeStemp = new Date(item.publishDate).getTime();
-                item.dateFormat = parseDate(timeStemp);
+                const timeStemp = new Date(data.publishDate).getTime();
+                data.dateFormat = parseDate(timeStemp);
 
-                app.globalData.news.push(item);
-            });
-
+                app.globalData.news.push(data);
+            }
+            console.log("app.globalData.news", app.globalData.news);
             wx.hideLoading();
         })
         .catch(error => {

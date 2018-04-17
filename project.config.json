@@ -30,13 +30,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": -1,
 			"list": [
 				{
-					"id": -1,
+					"id": 0,
 					"name": "分享详情页",
 					"pathName": "pages/detail/index",
-					"query": "id= WiMI936DXX"
+					"query": "id=WiMI936DXX"
 				}
 			]
 		}

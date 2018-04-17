@@ -16,16 +16,41 @@ Page({
     onLoad: function(option) {
         let currentId = "";
         console.log("option", option);
-        const news = app.globalData.news;
-        this.setData({
-            dataList: news
-        });
+        let news = app.globalData.news;
+        let hasID = false;
         if (option && option.id) {
             currentId = option.id;
+            console.log("news", news);
+
+            news.forEach(item => {
+                if (item.id == currentId) {
+                    hasID = true;
+                }
+            });
+            if (!hasID) {
+                service({
+                    url: "https://api.readhub.me/topic/" + currentId
+                }).then(() => {
+                    this.setData({
+                        dataList: news,
+                        currentId: currentId
+                    });
+                });
+            } else {
+                this.setData({
+                    dataList: news,
+                    currentId: currentId
+                });
+            }
         } else {
             currentId = this.data.dataList[0].id;
+            this.setData({
+                dataList: news,
+                currentId: currentId
+            });
         }
-        this.setData({ currentId: currentId });
+
+        console.log("asdasd", this.data.dataList);
     },
     onReady: function() {
         this.setData({
@@ -69,7 +94,7 @@ Page({
         }
     },
     // 点击右下角(未使用)
-    actionSheet: function () {
+    actionSheet: function() {
         wx.showActionSheet({
             itemList: ["复制新闻地址"],
             success: res => {
@@ -83,9 +108,8 @@ Page({
             }
         });
     },
-    getNews: () => { },
     // 复制当前地址(未使用)
-    setClipboardData: function () {
+    setClipboardData: function() {
         const currentId = this.data.currentId;
         const dataList = this.data.dataList;
         let data = {};
@@ -98,13 +122,13 @@ Page({
         if (data.mobileUrl) {
             wx.setClipboardData({
                 data: data.mobileUrl,
-                success: function (res) {
+                success: function(res) {
                     wx.showToast({
                         title: "复制成功",
                         icon: "success"
                     });
                 },
-                fail: function (res) {
+                fail: function(res) {
                     wx.showToast({
                         title: "复制失败",
                         icon: "none"
@@ -119,7 +143,7 @@ Page({
         }
     },
     // 分享
-    onShareAppMessage: function () {
+    onShareAppMessage: function() {
         const currentId = this.data.currentId;
         const dataList = this.data.dataList;
         let data = {};
