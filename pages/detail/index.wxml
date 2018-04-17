@@ -2,9 +2,9 @@
     <swiper current-item-id="{{currentId}}" class="detail-swiper" autoplay="{{false}}"  bindchange="bindChange" duration="{{swiperDura}}">  
         <swiper-item wx:for="{{dataList}}" wx:key="{{id}}" item-id="{{item.id}}" class="detail-swiper-item">
             <view class="detail-box">
-                <scroll-view class="detail-content-box">
+                <scroll-view class="detail-content-box"  scroll-y>
                     <view class="detail-title">{{item.title}}</view>
-                    <view class="detail-content">{{item.summary}}</view>
+                    <view class="detail-content">{{item.summary}}{{item.summary}}</view>
                 </scroll-view>
                 
                 <view class="detail-foot">

@@ -1,5 +1,6 @@
 {
     "usingComponents": {
         "loading": "../../common/component/loading/index"
-    }
+    },
+    "disableScroll": true
 }
