@@ -1,2 +1,5 @@
 {
+    "usingComponents": {
+        "loading": "../../common/component/loading/index"
+    }
 }

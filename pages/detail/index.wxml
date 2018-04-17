@@ -27,5 +27,12 @@
 
             </view>
         </swiper-item>
+
+        <swiper-item item-id="loading" class="detail-swiper-item">
+            <view class="detail-box">
+                <loading loadingText="加载中..." class="loading-component"></loading>
+            </view>
+        </swiper-item>
+
     </swiper>
 </view>
