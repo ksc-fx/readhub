@@ -4,7 +4,7 @@
             <view class="detail-box">
                 <scroll-view class="detail-content-box"  scroll-y>
                     <view class="detail-title">{{item.title}}</view>
-                    <view class="detail-content">{{item.summary}}{{item.summary}}</view>
+                    <view class="detail-content">{{item.summary}}</view>
                 </scroll-view>
                 
                 <view class="detail-foot">
