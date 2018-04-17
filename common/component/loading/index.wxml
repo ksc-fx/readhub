@@ -2,6 +2,6 @@
 <view class="loading">
     <view class="loading-box">
         <view wx:if="{{haveIcon}}" class="loading-icon"></view>
-        <view>{{loadingText}}</view>
+        <view wx:if="{{loadingText}}">{{loadingText}}</view>
     </view>
 </view>
