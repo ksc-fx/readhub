@@ -9,8 +9,13 @@ page {
   font-family: -apple-system-font, Helvetica Neue, sans-serif;
 }
 page {
+  display: -webkit-box;
+  display: -webkit-flex;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
   box-sizing: border-box;
   height: 100%;
   background-color: #f8f8f8;
@@ -949,10 +954,7 @@ icon {
   background-color: #1aad19;
   -webkit-transition: -webkit-transform 0.3s;
   transition: -webkit-transform 0.3s;
-  -webkit-transition: -webkit-transform 0.3s;
-  transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
-  transition: transform 0.3s, -webkit-transform 0.3s;
   transition: transform 0.3s, -webkit-transform 0.3s;
 }
 .weui-navbar__title {

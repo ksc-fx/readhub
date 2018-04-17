@@ -19,7 +19,7 @@
             {{ new.dateFormat }}
           </view>
 
-          <view class="list-item__title" bindtap="tabItem">
+          <view class="list-item__title" bindtap="tabItem" id="{{ new.id }}">
             {{new.title}}
           </view>
 

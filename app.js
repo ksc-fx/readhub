@@ -39,5 +39,12 @@ App({
   globalData: {
     userInfo: null,
     globalNews: []
+  },
+  onPullDownRefresh: function() {
+    wx.showLoading({
+      title: "正在刷新",
+      icon: "loading"
+    });
+    console.log("下拉刷新");
   }
 });
