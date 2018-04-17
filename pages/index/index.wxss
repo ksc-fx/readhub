@@ -9,4 +9,10 @@
   padding: 30rpx 20rpx;
   border-radius: 10rpx;
 }
+.list-item__title.isActive {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+  -webkit-transition-duration: 0.6s;
+          transition-duration: 0.6s;
+}
 /*# sourceMappingURL=./index.css.map */

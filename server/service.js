@@ -2,9 +2,9 @@ const service = options => {
     wx.showNavigationBarLoading();
 
     options = {
-        method: "GET",
         dataType: "json",
-        ...options
+        ...options,
+        method: options.method ? options.method.toUpperCase() : "GET"
     };
     const result = new Promise(function(resolve, reject) {
         //做一些异步操作

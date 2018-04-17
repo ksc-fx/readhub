@@ -1,28 +1,17 @@
-import service from "../../server/service";
-
-let dayObject = {
-    0: false,
-    1: false,
-    2: false,
-    3: false,
-    4: false,
-    5: false,
-    6: false
-};
-function resetDayObject() {
-    dayObject = {
-        0: false,
-        1: false,
-        2: false,
-        3: false,
-        4: false,
-        5: false,
-        6: false
-    };
-}
-//index.js
-//获取应用实例
+import service from "../../server/serviceNews";
 const app = getApp();
+
+function resetDayObject() {
+    app.globalData.dayObject = [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+    ];
+}
 
 Page({
     data: {
@@ -31,7 +20,8 @@ Page({
             lastCursor: "",
             pageSize: 20
         },
-        lowerReqState: false
+        lowerReqState: false,
+        isNavigate: false
     },
     onLoad: function() {
         this.getNews();
@@ -67,89 +57,44 @@ Page({
             lowerReqState: true
         });
         const option = {
-            url: "https://api.readhub.me/topic",
             data: {
                 ...this.data.newsForm
             }
         };
         service(option)
-            .then(data => {
-                const news = data.data;
-
-                news.forEach(item => {
-                    if (!dayObject[new Date(item.publishDate).getDay()]) {
-                        item.showDate = true;
-                        dayObject[new Date(item.publishDate).getDay()] = true;
-                    }
-                    const timeStemp = new Date(item.publishDate).getTime();
-                    item.dateFormat = this.parseDate(timeStemp);
-                });
+            .then(() => {
+                const globalNews = app.globalData.news;
 
                 this.setData({
-                    news: this.data.news.concat(news),
+                    news: globalNews,
                     lowerReqState: false
                 });
-                wx.hideLoading();
             })
             .catch(error => {
-                console.log("error", error);
+                console.log("errorsss", error);
             });
     },
-    /**
-     *  date 时间戳
-     */
-    parseDate: function(date) {
-        if (isNaN(date)) {
-            return "";
-        }
-        let resStr = "";
-        const today =
-            new Date().getFullYear() +
-            "/" +
-            (new Date().getMonth() + 1) +
-            "/" +
-            new Date().getDate();
-        const todayStart = new Date(today + " 00:00:00").getTime();
-        const todayEnd = new Date(today + " 23:59:59").getTime();
-        const dateDiff = Math.floor((todayEnd - date) / 86400000);
-        const dayList = [
-            "周日",
-            "周一",
-            "周二",
-            "周三",
-            "周四",
-            "周五",
-            "周六"
-        ];
-        const todayDay = new Date().getDay();
-        const dateDay = new Date(date).getDay();
-        resStr = dayList[dateDay];
-        switch (dateDiff) {
-            case 0:
-                resStr = "今天";
-                break;
-            case 1:
-                resStr = "昨天";
-                break;
-            default:
-        }
-        if (
-            todayDay < dateDay ||
-            (todayDay != dateDay && dateDay == 0 && todayDay != 1)
-        ) {
-            resStr = "上" + resStr;
-        }
-        return resStr;
-    },
     tabItem: function(e) {
-        console.log("点击", e);
+        if (this.data.isNavigate) {
+            return;
+        }
+        this.setData({
+            isNavigate: true
+        });
+
         wx.navigateTo({
             url: "../detail/index?id=" + e.target.id,
             success: () => {
                 console.log("跳转详情succ");
+                this.setData({
+                    isNavigate: false
+                });
             },
             fail: error => {
                 console.log("跳转详情error", error);
+                this.setData({
+                    isNavigate: false
+                });
             }
         });
     },
