@@ -47,6 +47,8 @@
     height: 50rpx;
     position: relative;
     top: 25rpx;
+    padding: 0rpx;
+    margin: 0rpx;
 }
 .loading-component {
     height: 100%;

@@ -30,8 +30,15 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 0,
+			"list": [
+				{
+					"id": -1,
+					"name": "分享详情页",
+					"pathName": "pages/detail/index",
+					"query": "id= WiMI936DXX"
+				}
+			]
 		}
 	}
 }

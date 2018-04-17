@@ -68,8 +68,8 @@ Page({
                 });
         }
     },
-    // 点击右下角
-    actionSheet: function() {
+    // 点击右下角(未使用)
+    actionSheet: function () {
         wx.showActionSheet({
             itemList: ["复制新闻地址"],
             success: res => {
@@ -83,9 +83,9 @@ Page({
             }
         });
     },
-    getNews: () => {},
-    // 复制当前地址
-    setClipboardData: function() {
+    getNews: () => { },
+    // 复制当前地址(未使用)
+    setClipboardData: function () {
         const currentId = this.data.currentId;
         const dataList = this.data.dataList;
         let data = {};
@@ -98,13 +98,13 @@ Page({
         if (data.mobileUrl) {
             wx.setClipboardData({
                 data: data.mobileUrl,
-                success: function(res) {
+                success: function (res) {
                     wx.showToast({
                         title: "复制成功",
                         icon: "success"
                     });
                 },
-                fail: function(res) {
+                fail: function (res) {
                     wx.showToast({
                         title: "复制失败",
                         icon: "none"
@@ -119,7 +119,7 @@ Page({
         }
     },
     // 分享
-    onShareAppMessage: function() {
+    onShareAppMessage: function () {
         const currentId = this.data.currentId;
         const dataList = this.data.dataList;
         let data = {};
@@ -132,7 +132,7 @@ Page({
         return {
             title: data.title,
             // desc: data.summary,
-            path: "/page/detail/index"
+            path: "pages/detail/index?id=" + currentId
         };
     }
 });

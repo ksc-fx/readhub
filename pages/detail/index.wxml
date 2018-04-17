@@ -22,7 +22,7 @@
                         </block>
                         
                     </view>
-                    <view class="detail-share" bindtap="actionSheet"></view>
+                    <button class="detail-share" open-type="share"></button>
                 </view>
 
             </view>
